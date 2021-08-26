@@ -28,6 +28,12 @@ dependencies {
 	implementation 'io.springfox:springfox-swagger2:2.9.2'
 	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security:spring-security-test'
+	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+	implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.4.2'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testCompileOnly 'org.projectlombok:lombok:1.18.20'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
