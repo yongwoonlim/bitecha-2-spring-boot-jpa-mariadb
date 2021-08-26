@@ -1,2 +1,12 @@
-package com.yongwoonlim.api.util;public class Messenger {
+package com.yongwoonlim.api.util;
+
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
+public class Messenger {
+    private String message;
+    private int status;
+    private String code;
 }

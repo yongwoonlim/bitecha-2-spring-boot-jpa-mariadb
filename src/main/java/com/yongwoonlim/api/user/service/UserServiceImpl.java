@@ -2,7 +2,9 @@ package com.yongwoonlim.api.user.service;
 
 import com.yongwoonlim.api.user.domain.User;
 import com.yongwoonlim.api.user.repository.UserRepository;
+import com.yongwoonlim.api.util.Proxy;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,6 +42,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteById(long id) {
-
+        userRepository.deleteById(id);
     }
 }
