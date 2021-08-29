@@ -12,40 +12,35 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 
+@SpringBootConfiguration
 @ExtendWith(MockitoExtension.class)
 class ItemServiceImplTest {
 
+    @Autowired
     private ItemServiceImpl itemService;
-    @Mock
-    ItemRepository itemRepository;
 
-    private AutoCloseable closable;
+    @Autowired
+    private ItemRepository itemRepository;
+
     @BeforeEach
     void setUp() {
+        MockitoAnnotations.initMocks(this);
         itemService = new ItemServiceImpl(itemRepository);
-    }
-
-    @BeforeAll
-    void openMock(){
-        closable = MockitoAnnotations.openMocks(this);
-    }
-
-    @AfterAll
-    void closeMock() throws Exception {
-        closable.close();
     }
 
     @Test
     void save() {
         Item item = Item.builder().itemBrand("삼성").itemColor("적색").itemName("갤럭시2").build();
         itemService.save(item);
-        List<Item> list = itemService.findAll();
-        list.forEach(System.out::println);
+        verify(itemRepository).save(item);
     }
 
     @Test
